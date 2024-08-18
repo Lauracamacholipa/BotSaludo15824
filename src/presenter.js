@@ -3,6 +3,7 @@ import saludarPorNombre from "./saludadorConNombre";
 import saludarPorGenero from "./saludadorPorGenero";
 import saludarPorEdad from "./saludadorPorEdad";
 import saludarPorIdioma from "./saludadorPorIdioma";
+import saludoCompleto from "./saludadorCompleto";
 import agregarMensajeAlChat from "./agregarMensajeAlChat";
 
 const inputTexto = document.querySelector("#input-texto");
@@ -40,5 +41,8 @@ form.addEventListener("submit", (event) => {
   } else if (estadoConversacion === 3){
     idioma = saludarPorIdioma(inputTexto, div,nombre);
     estadoConversacion = 4;
-  }
+  } else if (estadoConversacion === 4){
+    saludoCompleto(inputTexto, div,nombre,genero,edad,idioma);
+    estadoConversacion = 0;
+  } 
 });
