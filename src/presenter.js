@@ -1,36 +1,40 @@
 import saludarPorTiempo from "./saludadorConTiempo";
+import saludarPorNombre from "./saludadorConNombre";
+import saludarPorGenero from "./saludadorPorGenero";
+import saludarPorEdad from "./saludadorPorEdad";
+import agregarMensajeAlChat from "./agregarMensajeAlChat";
 
 const inputTexto = document.querySelector("#input-texto");
 const form = document.querySelector("#saludar-form");
 const div = document.querySelector("#resultado-div");
 
 let estadoConversacion = 0;
-let nombreUsuario;
+let nombre = '';
+let genero = '';
+let edad = '';
+let idioma = '';
 
 const saludoInicial = saludarPorTiempo();
-agregarMensajeAlChat("Máquina", saludoInicial);
-agregarMensajeAlChat("Máquina", "Puedes darme tu nombre?");
-
-function agregarMensajeAlChat(origen, mensaje) {
-  const mensajeElemento = document.createElement("p");
-  mensajeElemento.textContent = `${origen}: ${mensaje}`;
-  div.appendChild(mensajeElemento);
-}
+agregarMensajeAlChat("Máquina", saludoInicial, div);
+agregarMensajeAlChat("Máquina", "Puedes darme tu nombre?", div);
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  const textoIngresado = inputTexto.value;
 
   if (estadoConversacion === 0) {
-    nombreUsuario = textoIngresado;
-    agregarMensajeAlChat("Usuario", nombreUsuario);
-    agregarMensajeAlChat("Máquina", `Gracias, ${nombreUsuario}!`);
-
-    inputTexto.placeholder = "Ingresa tu género...";
-    inputTexto.value = "";
-
+    nombre = saludarPorNombre(inputTexto, div);
     estadoConversacion = 1;
-    agregarMensajeAlChat("Máquina", "Cual es tu género?");
-  }
+    agregarMensajeAlChat("Máquina", "Ahora podrías decirme ¿Cuál es tu género? (femenino o masculino)", div);
+  
+  } else if (estadoConversacion === 1){
+    genero = saludarPorGenero(inputTexto, div,nombre);
+    estadoConversacion = 2;
+    agregarMensajeAlChat("Máquina", "¿Cuál es edad?", div);
+  
+  } else if (estadoConversacion === 2){
+    edad = saludarPorEdad(inputTexto, div,nombre,genero);
+    estadoConversacion = 3;
+    agregarMensajeAlChat("Máquina", "¿Prefieres hablar español o Inglés?", div);
 
+  } 
 });
