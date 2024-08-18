@@ -4,7 +4,7 @@ function saludarPorEdad(inputTexto, div,nombre,genero) {
     const edad = inputTexto.value;
 
     agregarMensajeAlChat("Usuario", edad, div);
-    if(genero = "masculino"){
+    if(genero === "masculino"){
         if(edad>=60){
             agregarMensajeAlChat("Máquina", `Gracias, ${nombre}! Ahora, se que eres un adulto mayor`, div);
         } else if(edad>=27){
@@ -16,7 +16,7 @@ function saludarPorEdad(inputTexto, div,nombre,genero) {
         } else{
             agregarMensajeAlChat("Máquina", `Gracias, ${nombre}! Ahora, se que eres un niño`, div);
         } 
-    } else{
+    } else if(genero === "femenino"){
         if(edad>=60){
             agregarMensajeAlChat("Máquina", `Gracias, ${nombre}! Ahora, se que eres una adulta mayor`, div);
         } else if(edad>=27){
