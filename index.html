@@ -1,30 +1,13 @@
-<html>
-  <body>
-    <h1>Saludador</h1>
-    <form id="saludo-form">
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" required />
-
-      <label for="genero">Género:</label>
-      <select id="genero">
-        <option value="masculino">Masculino</option>
-        <option value="femenino">Femenino</option>
-      </select>
-
-      <label for="edad">Edad:</label>
-      <input type="number" id="edad" required />
-
-      <label for="idioma">Idioma:</label>
-      <select id="idioma">
-        <option value="es">Español</option>
-        <option value="en">Inglés</option>
-      </select>
-
-      <input type="submit" value="Saludo" id="saludo-button" />
-    </form>
+<body>
+  <h1>Conversación</h1>
+  <div id="chat-container">
     <div id="resultado-div"></div>
+  </div>
+  <form id="saludar-form">
+    <input type="text" id="input-texto" placeholder="Ingresa tu nombre..." />
+    <input type="submit" value="Enviar" id="saludo-button" />
+  </form>
+  <script type="module" src="./src/presenter.js"></script>
+</body>
 
-    <script type="module" src="./src/presenter.js"></script>
-  </body>
-</html>
 
