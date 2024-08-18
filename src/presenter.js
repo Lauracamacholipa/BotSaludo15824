@@ -2,6 +2,7 @@ import saludarPorTiempo from "./saludadorConTiempo";
 import saludarPorNombre from "./saludadorConNombre";
 import saludarPorGenero from "./saludadorPorGenero";
 import saludarPorEdad from "./saludadorPorEdad";
+import saludarPorIdioma from "./saludadorPorIdioma";
 import agregarMensajeAlChat from "./agregarMensajeAlChat";
 
 const inputTexto = document.querySelector("#input-texto");
@@ -34,7 +35,10 @@ form.addEventListener("submit", (event) => {
   } else if (estadoConversacion === 2){
     edad = saludarPorEdad(inputTexto, div,nombre,genero);
     estadoConversacion = 3;
-    agregarMensajeAlChat("Máquina", "¿Prefieres hablar español o Inglés?", div);
-
-  } 
+    agregarMensajeAlChat("Máquina", "¿Prefieres hablar español o Inglés? (ES o EN)" , div);
+  
+  } else if (estadoConversacion === 3){
+    idioma = saludarPorIdioma(inputTexto, div,nombre);
+    estadoConversacion = 4;
+  }
 });
